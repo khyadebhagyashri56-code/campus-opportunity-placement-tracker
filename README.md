@@ -110,6 +110,18 @@ Campus-Tracker/
 
 This project provides practical experience with full-stack web development, REST-style API routes, database integration, authentication, and building a student-focused application.
 
+## Screenshots
+
+![Dashboard](https://github.com/user-attachments/assets/67aa7503-3ffd-4083-bcea-09f7ae46e39e)
+
+![Opportunities](https://github.com/user-attachments/assets/6bd1bcad-2166-4fa5-a5cc-fabf538922fc)
+
+![Applications](https://github.com/user-attachments/assets/57753a44-df84-4fe5-ac00-da113e02e77b)
+
+![Resume Studio](https://github.com/user-attachments/assets/27851989-cfc0-42ef-b63a-8aed7e9f5298)
+
+![Interview Practice](https://github.com/user-attachments/assets/0f17b283-8abc-491b-98a5-986db1992c1f)
+
 ## Author
 
 **Bhagyashri Khyade**
