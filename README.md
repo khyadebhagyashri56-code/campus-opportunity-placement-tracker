@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Campus Opportunity & Placement Tracker
+
+A web-based platform designed to help students manage placement preparation, explore job opportunities, track applications, and organize their career journey in one place.
+
+## About the Project
+
+The Campus Opportunity & Placement Tracker is a student-focused web application built to simplify the placement preparation process. It provides a centralized dashboard where students can explore opportunities, save jobs, manage applications, maintain their profiles, and access resume and interview practice tools.
+
+## Features
+
+- **Student Authentication** — Sign up and log in to the platform.
+- **Placement Dashboard** — Access placement-related information in one place.
+- **Job Opportunities** — Browse available opportunities and view their details.
+- **Saved Opportunities** — Save opportunities for future reference.
+- **Application Tracking** — Manage and track job applications.
+- **Student Profile** — Maintain personal and academic information.
+- **Resume Studio** — Work on resume preparation.
+- **Interview Practice** — Access interview practice features and review interview history.
+- **Reminders** — Organize important placement-related tasks and reminders.
+
+## Tech Stack
+
+- **Frontend:** Next.js, React.js, JavaScript, Tailwind CSS
+- **Backend:** Next.js API Routes
+- **Database:** PostgreSQL
+- **ORM:** Prisma
+- **Authentication:** JWT
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Make sure you have the following installed:
+
+- Node.js
+- npm
+- PostgreSQL
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/khyadebhagyashri56-code/campus-opportunity-placement-tracker.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd Campus-Tracker
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Create a `.env` file in the project root and configure your local PostgreSQL database connection and required environment variables.
+
+   **Important:** Never commit `.env` files, database passwords, or authentication secrets to GitHub.
+
+5. Generate the Prisma Client:
+
+   ```bash
+   npx prisma generate
+   ```
+
+6. Apply the database migrations:
+
+   ```bash
+   npx prisma migrate deploy
+   ```
+
+7. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+8. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+```text
+Campus-Tracker/
+├── components/
+│   └── layout/
+├── lib/
+├── prisma/
+│   ├── migrations/
+│   └── schema.prisma
+├── public/
+└── src/
+    └── app/
+        ├── api/
+        ├── applications/
+        ├── dashboard/
+        ├── interviews/
+        ├── login/
+        ├── opportunities/
+        ├── profile/
+        ├── reminders/
+        ├── resume-studio/
+        ├── saved/
+        └── signup/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Learning Objectives
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+This project provides practical experience with full-stack web development, REST-style API routes, database integration, authentication, and building a student-focused application.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Author
 
-## Learn More
+**Bhagyashri Khyade**
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+GitHub: [khyadebhagyashri56-code](https://github.com/khyadebhagyashri56-code)
