@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+
+  // Student profile details
+  phone          String?
+  college        String?
+  course         String?
+  graduationYear Int?
+  skills         String?
+
+  // Profile photo and resume
+  profilePhoto String? @db.Text
+  resumeName   String?
+  resumeData   String? @db.Text
+
+  // Relations
+  applications       Application[]
+  savedOpportunities SavedOpportunity[]
+  interviewAttempts InterviewAttempt[]
+  reminders Reminder[]
+}
+
+model Company {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  website     String?
+  description String?
+  createdAt   DateTime @default(now())
+
+  opportunities Opportunity[]
+}
+
+model Opportunity {
+  id              Int       @id @default(autoincrement())
+  title           String
+  description     String?
+  location        String?
+  jobType         String?
+  salary          String?
+  applicationLink String?
+  deadline        DateTime?
+  createdAt       DateTime  @default(now())
+  companyId       Int
+
+  applications Application[]
+  savedByUsers SavedOpportunity[]
+  company      Company            @relation(fields: [companyId], references: [id])
+}
+
+model Application {
+  id            Int      @id @default(autoincrement())
+  status        String   @default("APPLIED")
+  appliedAt     DateTime @default(now())
+  notes         String?
+  userId        Int
+  opportunityId Int
+
+  opportunity Opportunity @relation(fields: [opportunityId], references: [id])
+  user        User        @relation(fields: [userId], references: [id])
+
+  @@unique([userId, opportunityId])
+}
+
+model SavedOpportunity {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  opportunityId Int
+  savedAt       DateTime @default(now())
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  opportunity Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, opportunityId])
+}
+
+model InterviewAttempt {
+  id          Int               @id @default(autoincrement())
+  interviewType String
+  score       Int               @default(0)
+  totalMarks  Int               @default(0)
+  completed   Boolean           @default(false)
+  createdAt   DateTime          @default(now())
+  userId      Int
+
+  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  answers     InterviewAnswer[]
+}
+
+model InterviewAnswer {
+  id               Int             @id @default(autoincrement())
+  question         String          @db.Text
+  answer           String          @db.Text
+  questionNumber   Int
+  attemptId        Int
+
+  attempt          InterviewAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+
+  @@unique([attemptId, questionNumber])
+}
+
+model Reminder {
+  id        Int      @id @default(autoincrement())
+  title     String
+  company   String?
+  type      String
+  date      DateTime
+  notes     String?  @db.Text
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, date])
+}
